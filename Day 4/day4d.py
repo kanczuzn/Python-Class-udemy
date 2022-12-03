@@ -36,19 +36,20 @@ loss = 0
 while game == 1:
     player_RPS = -1
     while player_RPS == -1:
-        player_RPS = int(input("What do you choose? Type 0 for Rock, 1 for Paper, or 2 for Scissors\n"))
+        player_RPS = int(input("What do you choose? Type 0 for Rock, 1 for Paper, or 2 for Scissors.\n"))
         if player_RPS < 0 or player_RPS > 2:
             player_RPS = -1
             print("Please select 0, 1, or 2.")
     comp_RPS = random.randint(0,2)
     print(game_RPS[player_RPS])
-    print(f"Computer chose:{game_RPS[comp_RPS]}")
+    print(f"Computer chose:\n{game_RPS[comp_RPS]}")
 
-    if player_RPS - comp_RPS == 0:
+    result = player_RPS - comp_RPS
+    if result == 0:
         print("It's a tie.")
         tie += 1
         #tie
-    elif player_RPS - comp_RPS == 1 or player_RPS - comp_RPS == -2:
+    elif result == 1 or result == -2:
         print("You win!")
         win += 1
         #win
