@@ -64,16 +64,16 @@ while run_pass_create == 0:
             if new_pass_list[ct] == new_pass_list[ct + 1]:
                 if plist_lett.count(new_pass_list[ct + 1]) > 0:
                     while new_pass_list[ct] == new_pass_list[ct + 1]:
-                        x = random.randint(0, len(plist_lett) - 1)
-                        new_pass_list[ct + 1] = plist_lett[x]
+                        y = random.randint(0, len(plist_lett) - 1)
+                        new_pass_list[ct + 1] = plist_lett[y]
                 elif plist_dig.count(new_pass_list[ct + 1]) > 0:
                     while new_pass_list[ct] == new_pass_list[ct + 1]:
-                        x = random.randint(0, len(plist_dig) - 1)
-                        new_pass_list[ct + 1] = plist_dig[x]
+                        y = random.randint(0, len(plist_dig) - 1)
+                        new_pass_list[ct + 1] = plist_dig[y]
                 else:
                     while new_pass_list[ct] == new_pass_list[ct + 1]:
-                        x = random.randint(0, len(plist_spc) - 1)
-                        new_pass_list[ct + 1] = plist_spc[x]
+                        y = random.randint(0, len(plist_spc) - 1)
+                        new_pass_list[ct + 1] = plist_spc[y]
 
     if (pass_dig_ct >= pass_num) and (pass_spc_ct >= pass_spc):
         break
