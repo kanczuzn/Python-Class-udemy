@@ -43,19 +43,17 @@ while run_pass_create == 0:
             x = random.randint(1, 3)
 
         if x == 1:
-            y = random.randint(0, len(plist_lett) - 1)
-            new_pass_list[ct] = plist_lett[y]
+            new_pass_list[ct] = random.choice(plist_lett)
         elif x == 2:
-            y = random.randint(0, len(plist_dig) - 1)
-            new_pass_list[ct] = plist_dig[y]
+            new_pass_list[ct] = random.choice(plist_dig)
             pass_dig_ct += 1
         else:
-            y = random.randint(0, len(plist_spc) - 1)
-            new_pass_list[ct] = plist_spc[y]
+            new_pass_list[ct] = random.choice(plist_spc)
             pass_spc_ct += 1
     for ct in range(0, pass_len):
         max_lim = round((pass_len / 9) + 1)
         new_pass += new_pass_list[ct]
+        print(new_pass)
         if new_pass_list.count(new_pass_list[ct]) > max_lim and pass_len < 90:
             pass_dig_ct = 0
             pass_spc_ct = 0
@@ -64,16 +62,13 @@ while run_pass_create == 0:
             if new_pass_list[ct] == new_pass_list[ct + 1]:
                 if plist_lett.count(new_pass_list[ct + 1]) > 0:
                     while new_pass_list[ct] == new_pass_list[ct + 1]:
-                        y = random.randint(0, len(plist_lett) - 1)
-                        new_pass_list[ct + 1] = plist_lett[y]
+                        new_pass_list[ct + 1] = random.choice(plist_lett)
                 elif plist_dig.count(new_pass_list[ct + 1]) > 0:
                     while new_pass_list[ct] == new_pass_list[ct + 1]:
-                        y = random.randint(0, len(plist_dig) - 1)
-                        new_pass_list[ct + 1] = plist_dig[y]
+                        new_pass_list[ct + 1] = random.choice(plist_dig)
                 else:
                     while new_pass_list[ct] == new_pass_list[ct + 1]:
-                        y = random.randint(0, len(plist_spc) - 1)
-                        new_pass_list[ct + 1] = plist_spc[y]
+                        new_pass_list[ct + 1] = random.choice(plist_spc)
 
     if (pass_dig_ct >= pass_num) and (pass_spc_ct >= pass_spc):
         break
