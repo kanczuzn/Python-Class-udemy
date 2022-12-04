@@ -65,7 +65,7 @@ while run_pass is True:
                 pass_check_spc = 1
 
             for ct in range(0,pass_len-1):
-                limit = (pass_len/round(len(plist)/2))+1
+                limit = round(pass_len/(len(plist)/2))+1
                 while new_pass[ct] == new_pass[ct+1]:
                     new_pass[ct+1] = random.choice(plist)
                 while (new_pass.count(new_pass[ct]) > limit) and (pass_len < (len(plist) * 5) and
