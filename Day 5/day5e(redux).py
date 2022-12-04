@@ -1,4 +1,3 @@
-# Go to: https://replit.com/@appbrewery/password-generator-start?v=1
 import string
 import random
 
@@ -7,7 +6,7 @@ pass_len = 0
 pass_spc = ""
 print("Welcome to the PyPassword Generator!")
 while run_pass is True:
-    while pass_len <= 3:
+    while pass_len < 3:
         try:
             pass_len = int(input("How long should your password be?\n"))
             if pass_len < 3:
