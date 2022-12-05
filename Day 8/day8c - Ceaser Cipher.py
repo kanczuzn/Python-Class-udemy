@@ -14,7 +14,11 @@ def main():
         while direction == "":
             try:
                 direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").lower()[0]
-                if direction == "d" or direction == "e":
+                if direction == "d":
+                    direction = "decoded"
+                    continue
+                elif direction == "e":
+                    direction = "encoded"
                     continue
                 else:
                     raise IndexError
@@ -27,10 +31,6 @@ def main():
                 shift = int(input("Type the shift number:\n"))
                 shift =  int(shift % (len(alphabet)/2))
                 message = caesar_cipher(encrypt=direction, text=text, shift=shift)
-                if direction == "e":
-                    direction = "encoded"
-                elif direction == "d":
-                    direction = "decoded"
                 print(f"The {direction} text is:{''.join(message)}\n")
                 encoder = quit()
             except ValueError:
@@ -47,7 +47,7 @@ def quit():
 
 def caesar_cipher(encrypt, text, shift):
     text_list = list(text)
-    if encrypt == "d":
+    if encrypt == "decoded":
         shift *= -1
     for char in range(len(text_list)):
         if text_list[char] in alphabet:
