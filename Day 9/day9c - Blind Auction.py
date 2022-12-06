@@ -95,8 +95,8 @@ def auction_end():
             highest = 0
             name = ""
             right_auc = check("Is this the correct auction? (Yes/No)"
-                                  f"\n{Auctions[auc_choice]['Item']}"
-                                  "\n___________________\n")
+                              f"\n{Auctions[auc_choice]['Item']}"
+                              "\n___________________\n")
             if right_auc is True:
                 for entry in Auctions[auc_choice]['Bids']:
                     if Auctions[auc_choice]['Bids'][entry] > highest:
@@ -107,11 +107,10 @@ def auction_end():
                 Auctions.pop(auc_choice)
                 auc_end = False
                 input("\n\nPress enter to continue...")
-            else:
-                right_auc = check("Do you still want to end an auction? (Yes/No)")
-                if right_auc == False:
+            elif right_auc is False:
+                right_auc = check("Do you still want to end an auction? (Yes/No)\n")
+                if right_auc is False:
                     auc_end = False
-
 
 
 def auction_choices(choice_typ):
