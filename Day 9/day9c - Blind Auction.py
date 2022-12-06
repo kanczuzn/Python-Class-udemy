@@ -75,13 +75,13 @@ def auction_bid():
                 name = input("\nWhat is your name?\n").strip()
             try:
                 bid = int(input("What is your bid?\n$"))
-            except:
+            except ValueError:
                 bid = "Invalid"
                 while isinstance(bid, int) is False:
                     print("That is not a valid number, please try again.")
                     try:
                         bid = int(input("How much would you like to bid?\n$"))
-                    except:
+                    except ValueError:
                         continue
             Auctions[auc_choice]["Bids"][name] = bid
             auc_next = check("Would you like to add another bidder? (Yes/No)\n")
