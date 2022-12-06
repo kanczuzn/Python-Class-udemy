@@ -88,23 +88,30 @@ def auction_bid():
 
 
 def auction_end():
-    auc_choice = auction_choices("end")
-    if auc_choice > -1:
-        auc_check = 0
-        highest = 0
-        name = ""
-        while auc_check not in auc_check_ls:
-            auc_check = input("Is this the correct auction? (Yes/No)"
-                              f"\n{Auctions[auc_choice]['Item']}"
-                              "\n").lower()
-        for entry in Auctions[auc_choice]['Bids']:
-            if Auctions[auc_choice]['Bids'][entry] > highest:
-                name = entry
-                highest = Auctions[auc_choice]['Bids'][entry]
-        clear()
-        print(f"The winner is {name}, with a bid of ${highest}\n")
-        Auctions.pop(auc_choice)
-        input("\n\nPress enter to continue...")
+    auc_end = True
+    while auc_end:
+        auc_choice = auction_choices("end")
+        if auc_choice > -1:
+            highest = 0
+            name = ""
+            right_auc = check("Is this the correct auction? (Yes/No)"
+                                  f"\n{Auctions[auc_choice]['Item']}"
+                                  "\n___________________\n")
+            if right_auc is True:
+                for entry in Auctions[auc_choice]['Bids']:
+                    if Auctions[auc_choice]['Bids'][entry] > highest:
+                        name = entry
+                        highest = Auctions[auc_choice]['Bids'][entry]
+                clear()
+                print(f"The winner is {name}, with a bid of ${highest:,}\n")
+                Auctions.pop(auc_choice)
+                auc_end = False
+                input("\n\nPress enter to continue...")
+            else:
+                right_auc = check("Do you still want to end an auction? (Yes/No)")
+                if right_auc == False:
+                    auc_end = False
+
 
 
 def auction_choices(choice_typ):
