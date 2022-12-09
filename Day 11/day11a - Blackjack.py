@@ -96,7 +96,7 @@ def blackjack():
 def another_round(message):
     """Checks if the player wishes to play another round"""
     time.sleep(.5)
-    play_again = choice(f"\n{message}\n\nWould you like to play again? ")
+    play_again = choice(f"\n{message}\n\nWould you like to play again?(Y/N) ")
     if play_again is True:
         blackjack()
     else:
