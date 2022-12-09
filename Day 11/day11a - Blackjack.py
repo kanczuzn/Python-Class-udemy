@@ -92,7 +92,7 @@ def another_round(message):
         blackjack()
     else:
         print("\nThanks for playing!")
-        exit(1)
+        exit(0)
 
 
 def hit_21(hand):
