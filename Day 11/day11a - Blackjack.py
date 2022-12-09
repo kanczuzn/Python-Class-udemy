@@ -32,6 +32,7 @@ def main():
 
 
 def choice(message):
+    """Creates a True/False out of an input choice of yes or no."""
     choice_con = True
     while choice_con:
         try:
@@ -47,17 +48,22 @@ def choice(message):
 
 
 def blackjack():
+    """Checks for win conditions and runs game."""
     playing = True
     print(logo)
     time.sleep(.5)
     player_hand = {}
     comp_hand = {}
-    player_hand.update(select_card())
-    player_hand.update(select_card())
+    for _ in range(2):
+        player_hand.update(select_card())
     comp_hand.update(select_card())
     while playing:
         player_total = print_hand(player_hand, "Your cards: ")
-        if playing is True:
+        if len(player_hand) == 2 and player_total == 21:    # Blackjack win condition, only two cards in the players
+            comp_hand.update(select_card())                 # hand and score is equal to 21.
+            print_hand(comp_hand, "Computer's hand: ")
+            another_round("BLACKJACK! YOU WIN!!")
+        else:
             print_hand(comp_hand, "Computer's first card: ")
             if player_total > 21:
                 another_round("You bust! You lose this hand.")
@@ -70,22 +76,25 @@ def blackjack():
                     time.sleep(.25)
                     comp_hand.update(select_card())
                     comp_turn = True
-                    while comp_turn:
+                    while comp_turn:                        # runs until the computer's turn is done.
                         comp_total = print_hand(comp_hand, "Computer's hand: ")
                         time.sleep(.25)
-                        if comp_total > 21:
+                        if len(comp_hand) == 2 and comp_total == 21:
+                            another_round("The Dealer got Blackjack. You lose. . .")
+                        elif comp_total > 21:
                             another_round("You win!")
+                        elif comp_total < 17:
+                            comp_hand.update(select_card())
                         elif comp_total > player_total:
                             another_round("You lose. . .")
                         elif comp_total == player_total:
                             another_round("It's a draw.")
-                        elif comp_total < 18:
-                            comp_hand.update(select_card())
                         else:
                             another_round("You win!")
 
 
 def another_round(message):
+    """Checks if the player wishes to play another round"""
     time.sleep(.5)
     play_again = choice(f"\n{message}\n\nWould you like to play again? ")
     if play_again is True:
@@ -96,6 +105,7 @@ def another_round(message):
 
 
 def hit_21(hand):
+    """If the hand is greater than 21, checks for an ace."""
     for hand_card in hand:
         if hand[hand_card] == 11:
             return hand_card
@@ -103,6 +113,7 @@ def hit_21(hand):
 
 
 def print_hand(hand, message):
+    """Prints out the hand and passes back the total score."""
     total_hand = message
     hand_count = 0
     for hand_card in hand:
@@ -120,6 +131,7 @@ def print_hand(hand, message):
 
 
 def select_card():
+    """Adds a new card to the hand."""
     new_card_rand = random.randint(0, 12)
     new_card_face = next(iter(cards[new_card_rand]))
     new_card_val = cards[new_card_rand][new_card_face]
