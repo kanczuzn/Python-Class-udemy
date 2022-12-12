@@ -18,7 +18,10 @@ def usr_choice(message, choices):
     separated by spaces. If Choices is #num# then it expects a number.
     '#num# +' expects a positive number.'
     '#num# -' expects a negative number.
-    '#num# +-' will accept either positive or negative."""
+    '#num# +-' will accept either positive or negative.
+    if the item starts with then it will be hidden, this is only for a list broken by spaces.
+    For instance:
+    '*report, *off, itema, itemb' report and off will be hidden from the user."""
     check = False
     while check is False:
         choices.strip()
@@ -31,12 +34,13 @@ def usr_choice(message, choices):
             try:
                 check = input(message).strip().lower()
                 for choice in choices_lst:
-                    if choice == check:
-                        return choice
+                    if choice == check or choice == "*"+check:
+                        return check
                 raise IndexError
             except (IndexError or UnboundLocalError):
                 for choice in choices_lst:
-                    error_choices += f"{choice}, "
+                    if choice[0] != "*":
+                        error_choices += f"{choice}, "
                 error_choices = error_choices[:-2]
                 print(f"Please select one of these choices: {error_choices}.")
                 check = False
