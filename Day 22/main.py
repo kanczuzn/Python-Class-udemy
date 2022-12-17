@@ -36,14 +36,14 @@ def main():
         if ball.ycor() >= 280 or ball.ycor() <= -280:
             ball.bounce()
         # detect collision with right paddle
-        if (ball.distance(r_paddle) < 60 and 330 < ball.xcor() < 345) or \
-                (ball.distance(l_paddle) < 60 and -345 < ball.xcor() < -330):
+        if (ball.distance(r_paddle) < 60 and 325 <= ball.xcor() <= 350) or \
+                (ball.distance(l_paddle) < 60 and -350 <= ball.xcor() <= -325):
             ball.bounce_paddle()
-        if ball.xcor() > 380:
+        if ball.xcor() >= 380:
             new_heading = ball.heading() - 180
             ball.start(new_heading)
             game_on = scoreboard.lpoint()
-        if ball.xcor() < -380:
+        if ball.xcor() <= -380:
             new_heading = ball.heading() + 180
             ball.start(new_heading)
             game_on = scoreboard.rpoint()

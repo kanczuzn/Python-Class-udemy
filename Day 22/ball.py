@@ -9,7 +9,6 @@ class Ball(Turtle):
         self.shape("circle")
         self.color("white")
         self.pu()
-        self.speed("fastest")
         self.move_speed = 0
 
     def start(self, heading):
@@ -30,4 +29,4 @@ class Ball(Turtle):
         else:
             new_heading = 180 + (360 - self.heading()) + random()
             self.setheading(new_heading)
-        self.move_speed *= 1.1
+        self.move_speed += 1

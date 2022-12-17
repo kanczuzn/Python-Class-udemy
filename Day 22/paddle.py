@@ -11,7 +11,6 @@ class Paddle(Turtle):
         self.pu()
         self.setheading(UP)
         self.shapesize(stretch_len=5, stretch_wid=1)
-        self.speed("fastest")
         self.goto(location)
 
     def move_up(self):
