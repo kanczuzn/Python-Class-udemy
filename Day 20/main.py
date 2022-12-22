@@ -25,16 +25,16 @@ def snake_game():
         snake.move()
         if -300 >= snake.head.xcor() or snake.head.xcor() >= 300 or \
                 -300 >= snake.head.ycor() or snake.head.ycor() >= 300:
-            game_on = False
-            score.game_over()
+            score.reset()
+            snake.reset()
         if snake.head.distance(food) < 15:
             score.point()
             snake.extend(color)
             color = food.refresh()
         for seg in snake.segment[1:]:
             if snake.head.distance(seg) < 5:
-                game_on = False
-                score.game_over()
+                score.reset()
+                snake.reset()
         screen.listen()
         screen.onkeypress(key="Right", fun=snake.snake_right)
         screen.onkeypress(key="Left", fun=snake.snake_left)
