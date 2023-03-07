@@ -61,7 +61,6 @@ def main():
     web_input.focus()
     user_title = Label(text="Email/Username:", font=FONT, bg=WHITE)
     user_input = Entry(width=58, bg=WHITE)
-    user_input.insert(END, "kanczuzn@gmail.com")
     pass_title = Label(text="Password:", font=FONT, bg=WHITE)
     pass_input = Entry(width=32, bg=WHITE)
     gen_pass_button = Button(text="Generate Password", font=FONT, highlightthickness=0, bg=WHITE, command=rand_pass)
