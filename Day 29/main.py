@@ -8,7 +8,7 @@ FONT = ("Courier", 10)
 
 
 def main():
-# ---------------------------- PASSWORD GENERATOR ------------------------------- #
+    # ---------------------------- PASSWORD GENERATOR ------------------------------- #
     def rand_pass():
         letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
         numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
@@ -25,7 +25,7 @@ def main():
         pass_input.insert(0, password)
         copy(password)
 
-# ---------------------------- SAVE PASSWORD ------------------------------- #
+    # ---------------------------- SAVE PASSWORD ------------------------------- #
     def add_entry():
         website = web_input.get()
         username = user_input.get()
@@ -47,7 +47,7 @@ def main():
                 pass_input.delete(0, END)
             web_input.focus()
 
-# ---------------------------- UI SETUP ------------------------------- #
+    # ---------------------------- UI SETUP ------------------------------- #
     window = Tk()
     window.title("Password Manager")
     window.config(padx=50, pady=50, bg=WHITE)
