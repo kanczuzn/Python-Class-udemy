@@ -37,14 +37,17 @@ def main():
             try:
                 with open("data.json", "r") as pass_write:
                     data = json.load(pass_write)
-                info = f"E-mail: {data[website]['email']}\n" \
-                       f"Password: {data[website]['password']}"
             except FileNotFoundError:
                 messagebox.showerror(title="Oops!", message="You don't have any passwords stored yet!")
-            except KeyError:
-                messagebox.showerror(title="Oops!", message="You don't have an entry for that yet!")
             else:
-                messagebox.showinfo(title=website, message=info)
+                if website in data:
+                    info = f"E-mail: {data[website]['email']}\n" \
+                        f"Password: {data[website]['password']}"
+                    messagebox.showinfo(title=website, message=info)
+                else:
+                    messagebox.showerror(title="Oops!", message=f"You don't have an entry for: {website}.")
+
+
 
     # ---------------------------- SAVE PASSWORD ------------------------------- #
     def add_entry():
