@@ -9,6 +9,7 @@ MY_EMAIL = ""
 PASSWORD = ""
 MY_SMTP = ""
 
+
 def main():
     prog_start = True
 
@@ -31,7 +32,7 @@ def add_birthday():
         birthdays = pd.read_csv('./birthdays.csv')
 
     except FileNotFoundError:
-        pass
+        print('No birthday.csv found.')
 
     else:
         add_rem_choice = usr_choice("\nWould you like to add or remove a birthday?(add/rem) ", "add rem")
@@ -84,7 +85,7 @@ def mail_out():
             letter = file.read()
 
     except FileNotFoundError:
-        print("File not found.")
+        print("The letter was not found within the letter_templates folder..")
 
     else:
         curr_day = int(dt.datetime.now().day)
@@ -92,7 +93,7 @@ def mail_out():
         try:
             birthdays = pd.read_csv('./birthdays.csv')
         except FileNotFoundError:
-            print("File not found.")
+            print("No birthdays.csv found.")
         else:
             for entry in range(0, len(birthdays.index)):
                 day = int(birthdays.iloc[entry]['day'])
