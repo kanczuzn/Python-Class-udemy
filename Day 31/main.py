@@ -56,7 +56,7 @@ def main():
     # Save File
     def save_file():
         if len(word_list) >= 1:
-            if messagebox.askyesno(title="Goodbye!", message="Would you like to update your \n "
+            if messagebox.askyesno(title="Goodbye!", message="Would you like to update your \n"
                                                              "saved words based on the session?"):
                 words_to_learn = pandas.DataFrame(word_list)
                 words_to_learn.to_csv('./data/words_to_learn.csv', index=False)
